@@ -1,250 +1,41 @@
-<!DOCTYPE html>
-<html>
- 
-<head>
- 
-    <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>网站仍在搭建中……</title>
- 
-</head>
- 
-<body>
- 
-<!--
-Recreating Apple Watch's Utility face <http://www.apple.com/watch/design/> in HTML+CSS+JS
--->
- 
- 
- 
+<html><head><style class="vjs-styles-defaults">
+      .video-js {
+        width: 300px;
+        height: 150px;
+      }
+
+      .vjs-fluid {
+        padding-top: 56.25%
+      }
+    </style>
+<meta charset="utf-8">
+<title>该站点仍在搭建！</title>
 <style>
-    body {
-        background: black;
-    }
- 
-    .clock {
-        position: absolute;
-        opacity: 1;
-    }
- 
-    .fill .clock {
-        left: 50%;
-        top: 50%;
-    }
- 
-    .centre {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 0;
-        height: 0;
-    }
- 
-    .expand {
-        position: absolute;
-        top: 0;
-        left: 0;
-        transform: translate(-50%, -50%);
-    }
- 
-    .anchor {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 0;
-        height: 0;
-    }
- 
-    .element {
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
- 
-    .round {
-        border-radius: 296px;
-    }
- 
-    .circle-1 {
-        background: white;
-        width: 12px;
-        height: 12px;
-    }
- 
-    .circle-2 {
-        background: #FA9F22;
-        width: 8px;
-        height: 8px;
-    }
- 
-    .circle-3 {
-        background: black;
-        width: 4px;
-        height: 4px;
-    }
- 
-    .second {
-        transform: rotate(180deg);
-    }
- 
-    .minute {
-        transform: rotate(54deg);
-    }
- 
-    .second-hand {
-        width: 2px;
-        height: 164px;
-        background: #FA9F22;
-        transform: translate(-50%,-100%) translateY(24px);
-    }
- 
-    .hour {
-        transform: rotate(304.5deg);
-    }
- 
-    .thin-hand {
-        width: 4px;
-        height: 50px;
-        background: white;
-        transform: translate(-50%,-100%);
-    }
- 
-    .fat-hand {
-        width: 10px;
-        height: 57px;
-        border-radius: 10px;
-        background: white;
-        transform: translate(-50%,-100%) translateY(-18px);
-    }
- 
-    .minute-hand {
-        height: 112px;
-    }
- 
-    .hour-text {
-        position: absolute;
-        font: 40px Hei, Helvetica, Arial, sans-serif;
-        color: white;
-        transform: translate(-50%,-50%);
-    }
- 
-    .hour-10 {
-        padding-left: 0.4ex;
-    }
-    .hour-11 {
-        padding-left: 0.25ex;
-    }
- 
-    .minute-text {
-        position: absolute;
-        font: 12px Avenir Next, Helvetica, Arial, sans-serif;
-        color: white;
-        transform: translate(-50%,-50%);
-    }
- 
-    .minute-line {
-        background: white;
-        width: 1px;
-        height: 9px;
-        transform: translate(-50%,-100%) translateY(-131px);
-        opacity: 0.34;
-    }
+html,body,div,h1,*{margin:0;padding:0;}
+body{
+	background-color:#fefefe;
+	color:#333
+}
+.box{
+	width:580px;
+	margin:0 auto;
+}
+h1{
+	font-size:20px;
+	text-align:center; 
+	background:url(data:image/png;base64,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) no-repeat top center; 
+	padding-top:160px;
+	margin-top:30%;
+	font-weight:normal;
+}
+
 </style>
-<h1 style="color:white">精彩即将到来<br>网站仍在搭建中……</h1>
-<div class="fill">
-    <div class="reference"></div>
-    <div class="clock" id="utility-clock">
-        <div class="centre">
-            <div class="dynamic"></div>
-            <div class="expand round circle-1"></div>
-            <div class="anchor hour">
-                <div class="element thin-hand"></div>
-                <div class="element fat-hand"></div>
-            </div>
-            <div class="anchor minute">
-                <div class="element thin-hand"></div>
-                <div class="element fat-hand minute-hand"></div>
-            </div>
-            <div class="anchor second">
-                <div class="element second-hand"></div>
-            </div>
-            <div class="expand round circle-2"></div>
-            <div class="expand round circle-3"></div>
-        </div>
-    </div>
+<style>@-webkit-keyframes hideAnimation2{0% { opacity:0.618;} 100% {opacity:0;}}@keyframes hideAnimation{0% { opacity:0.618;} 100% {opacity:0;}}.noobox-hide{-webkit-animation:hideAnimation2 ease-in 0.333s forwards;animation:hideAnimation ease-in 0.333s forwards;}#NooBox-Video-Indicator-Icon{margin-top:-25px;height:30px;margin-bottom:-5px}#NooBox-Video-Indicator{pointer-events:none;display:none;height:100px;width:100px;position:absolute;text-align:center;font-size:23px;line-height:100px;opacity:0.618;background-color:rgb(43,54,125);color:white;z-index:99999999999999;margin:0;padding:0;border:0}</style><script type="text/javascript" src="chrome-extension://odphnbhiddhdpoccbialllejaajemdio/scripts/inspector.js"></script><input type="hidden" id="_w_brink"></head>
+
+<body>
+<div class="box">
+<h1>该站点仍在搭建！<br>我们很快就将相见！</h1>
 </div>
- 
-<script>
-    var clock = document.querySelector('#utility-clock')
-    utilityClock(clock)
- 
-    if (clock.parentNode.classList.contains('fill')) autoResize(clock, 295 + 32)
- 
-    function utilityClock(container) {
-        var dynamic = container.querySelector('.dynamic')
-        var hourElement = container.querySelector('.hour')
-        var minuteElement = container.querySelector('.minute')
-        var secondElement = container.querySelector('.second')
-        var minute = function(n) {
-            return n % 5 == 0 ? minuteText(n) : minuteLine(n)
-        }
-        var minuteText = function(n) {
-            var element = document.createElement('div')
-            element.className = 'minute-text'
-            element.innerHTML = (n < 10 ? '0' : '') + n
-            position(element, n / 60, 135)
-            dynamic.appendChild(element)
-        }
-        var minuteLine = function(n) {
-            var anchor = document.createElement('div')
-            anchor.className = 'anchor'
-            var element = document.createElement('div')
-            element.className = 'element minute-line'
-            rotate(anchor, n)
-            anchor.appendChild(element)
-            dynamic.appendChild(anchor)
-        }
-        var hour = function(n) {
-            var element = document.createElement('div')
-            element.className = 'hour-text hour-' + n
-            element.innerHTML = n
-            position(element, n / 12, 105)
-            dynamic.appendChild(element)
-        }
-        var position = function(element, phase, r) {
-            var theta = phase * 2 * Math.PI
-            element.style.top = (-r * Math.cos(theta)).toFixed(1) + 'px'
-            element.style.left = (r * Math.sin(theta)).toFixed(1) + 'px'
-        }
-        var rotate = function(element, second) {
-            element.style.transform = element.style.webkitTransform = 'rotate(' + (second * 6) + 'deg)'
-        }
-        var animate = function() {
-            var now = new Date()
-            var time = now.getHours() * 3600 +
-                    now.getMinutes() * 60 +
-                    now.getSeconds() * 1 +
-                    now.getMilliseconds() / 1000
-            rotate(secondElement, time)
-            rotate(minuteElement, time / 60)
-            rotate(hourElement, time / 60 / 12)
-            requestAnimationFrame(animate)
-        }
-        for (var i = 1; i <= 60; i ++) minute(i)
-        for (var i = 1; i <= 12; i ++) hour(i)
-        animate()
-    }
- 
-    function autoResize(element, nativeSize) {
-        var update = function() {
-            var scale = Math.min(window.innerWidth, window.innerHeight) / nativeSize
-            element.style.transform = element.style.webkitTransform = 'scale(' + scale.toFixed(3) + ')'
-        }
-        update()
-        window.addEventListener('resize', update)
-    }
-</script>
- 
-</body>
- 
-</html>
+
+
+<canvas id="NooBox-VideoBeyond-preCanvas" style="display: none"></canvas><div id="NooBox-Video-Indicator"></div></body></html>
